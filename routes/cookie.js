@@ -4,7 +4,7 @@ const config  = require('../config');
 const crypto  = require('crypto');
 const Cache   = require('../models/cache');
 
-router.all('*', (req, res, next) => {
+router.get('*', (req, res, next) => {
 	var token    = req.signedCookies.token;
 	var username = req.signedCookies.username;
 	if (token && username) {

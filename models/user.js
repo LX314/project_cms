@@ -22,6 +22,7 @@ module.exports = {
 				}
 				console.log('读取用户信息成功!');
 				// 将用户数据插入 users 集合
+				data.createTime =  new Date()*1;
 				collection.insert(data, {
 					safe: true
 				}, function(err, user) {

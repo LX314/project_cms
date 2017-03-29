@@ -1,7 +1,7 @@
 const mongodb = require('../config.db');
 const config  = require('../config');
 const crypto  = require('crypto');
-const Cache   = require('../models/cache');
+const Mongo   = require('../models/mongo');
 const oss     = require('ali-oss');
 const co      = require('co');
 const fs      = require('fs');
@@ -36,7 +36,8 @@ module.exports = {
 			len  = files.length,
 			sn   = 0,
 			en   = 0,
-			urls = [];
+			urls = [],
+			data = [];
 		for (let i = 0; i < len; i++) {
 			let file = files[i][1];
 			let path = file.path;
@@ -44,10 +45,14 @@ module.exports = {
 			uploadFile(path, dir, name, function(url) {
 				++sn;
 				urls.push(url);
-				console.log('======== 临时文件 %s 已清除 ========', name);
+				data.push({ user: user, url: url, createTime: new Date()*1 });
 				fs.unlinkSync(path);
+				console.log('======== 临时文件 %s 已清除 ========', name);
 				if (len === sn) {
-					success && success(len, urls);
+					Mongo.save('userImage', data, function (err, user) {
+						if (err) ++en;
+						success && success(len, urls);
+					});
 				}
 			}, function(err) {
 				++sn;

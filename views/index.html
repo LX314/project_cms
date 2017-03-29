@@ -183,7 +183,12 @@ $('#upload').on('click', function() {
 			console.log('正在进行，请稍候');
 		},
 		success: function(res) {
-			console.log(res);
+			if (res.code === '0000') {
+				console.log(res);
+			} else {
+				alert(res.message);
+				if (/000\d/.test(res.code)) location.href = '/login';
+			}
 		},
 		error: function(err) {
 			console.log(err);

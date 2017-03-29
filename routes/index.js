@@ -3,7 +3,7 @@ const router  = express.Router();
 const config  = require('../config');
 const crypto  = require('crypto');
 const User    = require('../models/user');
-const Cache   = require('../models/cache');
+const Mongo   = require('../models/mongo');
 
 
 router.get('/', (req, res, next) => {

@@ -3,6 +3,7 @@ const router  = express.Router();
 const config  = require('../../config');
 const MJJS    = require('../../common/MJJS');
 const File    = require('../../models/file');
+const mongo   = require('../../models/mongo');
 const code    = require('../../common/code');
 
 const formidable = require('formidable');
@@ -32,6 +33,7 @@ router.post('/upload', (req, res, next) => {
 				console.log(err);
 				da.code = '0100';
 				da.message = code[da.code];
+
 				return res.send(da);
 			}
 			if (!l) {
