@@ -19,7 +19,7 @@ function uploadFile(path, dir, name, cb, er) {
 	co(function* () {
 		var stream = fs.createReadStream(path);
 		console.log('======== 读取临时文件 %s ========', name);
-		var result = yield client.putStream('cms/' + config.env + '/'+ dir + '/' + name, stream);
+		var result = yield client.putStream('cms/' + config.dir.env + '/'+ dir + '/' + name, stream);
 		cb(result.url.replace('mj-public.oss-cn-shanghai.aliyuncs.com', 'mj-public.weimob.com'));
 	}).catch(function (err) {
 		console.log(err);
@@ -30,7 +30,7 @@ function uploadFile(path, dir, name, cb, er) {
 // 文件操作(阿里云)
 module.exports = {
 	// 上传文件
-	upload: (user, files, success) => {
+	upload: (dirName, user, files, success) => {
 		var md5  = crypto.createHash('md5'),
 			dir  = md5.update(user).digest('hex'),
 			len  = files.length,
@@ -42,7 +42,7 @@ module.exports = {
 			let file = files[i][1];
 			let path = file.path;
 			let name = path.match(/upload_[^\s]+/i)[0];
-			uploadFile(path, dir, name, function(url) {
+			uploadFile(path, (dirName? dirName + '/': '')+dir, name, function(url) {
 				++sn;
 				urls.push(url);
 				data.push({ user: user, url: url, createTime: new Date()*1 });

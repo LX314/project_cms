@@ -47,7 +47,8 @@ module.exports.noLocal = (env != 'localhost');
 
 // 常用文件夹
 module.exports.dir = {
-	upload: __dirname + '/upload'
+	upload: __dirname + '/upload',
+	env: env.substr(0, 2)
 };
 
 // MongonDB 配置

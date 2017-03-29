@@ -41,7 +41,7 @@ router.post('/upload', (req, res, next) => {
 				da.message = code[da.code];
 				return res.send(da);
 			}
-			File.upload(username, files, function(len, urls) {
+			File.upload('img', username, files, function(len, urls) {
 				var slen = urls.length;
 				if (len) {
 					if (len === slen) {
