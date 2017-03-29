@@ -1,0 +1,39 @@
+{% extends '../layout/layout.html' %}
+
+{% block body %}
+<!-- CRM -->
+<div id="advSearch" class="adv-search"></div>
+<div class="adv-table">
+	<table class="table table-bordered table-striped" id="advTable">
+		<thead>
+			<tr>
+				<th>NO.</th>
+				<th>联系人</th>
+				<th>联系电话</th>
+				<th>客户名称</th>
+				<th>性别</th>
+				<th>邮箱</th>
+				<th>QQ</th>
+				<th>地区</th>
+				<th>创建时间</th>
+				<th>创建人员</th>
+				<th>紧急程度</th>
+				<th>未升级天数</th>
+				<th>状态</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+	</table>
+</div>
+{% include "../partials/form/deleteClue.html" %}
+{% include "../partials/form/distributeClue.html" %}
+{% endblock %}
+
+{% block css %}
+<!-- <link rel="stylesheet" type="text/css" href="/css/index.css"> -->
+{% endblock %}
+
+{% block js %}
+<script src="/js/lib/valid.js"></script>
+<script src="/js/clue/index.js"></script>
+{% endblock %}

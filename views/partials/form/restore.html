@@ -1,0 +1,55 @@
+<!-- 分配商机 模态框 -->
+<div class="modal fade" id="opportunityRestore" tabindex="-1" role="dialog" aria-labelledby="opportunityClaim" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<header class="panel-heading">
+				恢复公海
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</header>
+			<div class="modal-body">
+				<div class="form-body">
+					<div class="form-horizontal">
+						<div class="form-group">
+							<label class="control-label col-md-4">客户名称：</label>
+							<div id="clientName" class="col-md-6 form-control-static"></div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4">客户ID：</label>
+							<div id="clientID" class="col-md-6 form-control-static"></div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4">联系人：</label>
+							<div id="contactName" class="col-md-6 form-control-static"></div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4">联系电话：</label>
+							<div id="contactTel" class="col-md-6 form-control-static"></div>
+						</div>
+						<div class="form-group">
+							<p class="tips">是否将此商机恢复至公海?</p>
+						</div>
+						<form id="" method="" role="">
+							<div class="form-group">
+								<div class="col-md-4 col-md-offset-2">
+									<button type="button" id="restoreSubmit" class="btn btn-info" style="width: 100px;">确认</button>
+								</div>
+								<div class="col-md-4 col-md-offset-1">
+									<button  id="btnCancel" class="btn btn-info" style="width: 100px;" data-dismiss="modal">返回</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% block css %}
+<style type="text/css">
+.form-group .tips{
+	color:#f00;
+	text-align: center;
+}
+</style>
+{% endblock %}

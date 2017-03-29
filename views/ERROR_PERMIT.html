@@ -1,0 +1,46 @@
+{% extends 'layout/layout.html' %}
+
+{% block body %}
+<div class="page-error clearfix">
+	<img src="/img/img-permit.png">
+	<div class="e-msg">
+		<p>对不起！您没有该页面的访问权限！<br>请联系管理员！</p>
+		<a href="javascript:history.back();"><i class="icon-return"></i>返回</a>
+	</div>
+</div>
+{% endblock %}
+
+{% block css %}
+<style>
+.page-error {
+	width: 520px;
+	margin: 100px auto 0;
+}
+.page-error img {
+	float: left;
+	margin-right: 30px;
+}
+.page-error .e-msg {
+	float: left;
+	margin-top: 20px;
+	line-height: 32px;
+	color: #a0a0a0;
+	font-size: 20px;
+	text-align: center;
+}
+.page-error i {
+	margin-right: 4px;
+	font-size: 28px;
+	vertical-align: middle;
+}
+.page-error a {
+	color: #a0a0a0;
+}
+</style>
+{% endblock %}
+
+{% block js %}
+<script>
+
+</script>
+{% endblock %}

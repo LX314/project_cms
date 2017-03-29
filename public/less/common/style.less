@@ -1,0 +1,174 @@
+/*----------------------------------------------
+	ADV SEARCH STYLES
+----------------------------------------------*/
+.adv-search {
+	.btn-info {
+		background-color: #505050;
+		border-color: #505050;
+	}
+}
+/*----------------------------------------------
+	CUSTOM CHECKBOX & RADIO BUTTONS STYLES
+----------------------------------------------*/
+
+ .icheck {
+	div,
+	.disabled {
+		float: left;
+	}
+	div {
+		margin-right: 10px;
+	}
+	label {
+		font-weight: normal;
+		vertical-align: middle;
+	}
+	.checkbox,
+	.radio {
+		margin-bottom: 10px;
+	}
+	.single-row {
+		display: inline-block;
+		width: 100%;
+	}
+	input[type='checkbox'],
+	input[type='radio'] {
+		display: block;
+	}
+} 
+
+
+/*----------------------------------------------
+	CUSTOM iTable STYLES
+----------------------------------------------*/
+
+.iTable {
+	th {
+		color: #fff;
+		background-color: #929292;
+		text-align: center;
+	}
+}
+.adv-table .iTable-page {
+	a:hover,
+	a.current {
+		color: #fff;
+		background-color: #2e95fe;
+	}
+}
+.icon-ctrl {
+	.more {
+		display:inline-block;
+		cursor: pointer;
+		position: relative;
+		min-height: 20px;
+	}
+	& > a,
+	.more span {
+		float: left;
+		line-height: 20px;
+	}
+	& > a {
+		&:hover {
+			color: #2e95fe;
+			transition: inherit;
+		}
+		margin-right: 8px;
+		cursor: pointer;
+	}
+	.more-ul {
+		position: absolute;
+		top: 20px;
+		right: 0;
+		display: none;
+		width: 130px;
+		border: 1px solid #ddd;
+		background-color: #fff;
+		text-align: center;
+		padding: 4px 0;
+		a {
+			display: block;
+			height: 20px;
+			line-height: 20px;
+			&:hover {
+				color: #fff;
+				background-color: #2e95fe;
+				transition: inherit;
+			}
+		}
+	}
+	.more:hover,
+	.more.active {
+		.more-ul {
+			display: block;
+			z-index: 100;
+		}
+		&::before,
+		&::after {
+			position: absolute;
+			right: 11px;
+			content: '';
+			display: block;
+			width: 0;
+			height: 0;
+			z-index: 100;
+		}
+		&::before {
+			top: 16px;
+			border-right: 5px solid transparent;
+			border-bottom: 4px solid #ddd;
+			border-left: 5px solid transparent;
+		}
+		&::after {
+			top: 17px;
+			border-right: 5px solid transparent;
+			border-bottom: 4px solid #fff;
+			border-left: 5px solid transparent;
+		}
+	}
+}
+
+.record-box{
+	.note{
+		border-bottom: 1px dashed #ccc;
+		padding: 10px 5px;
+		a,span{
+			color: #2e95fe;
+			padding: 0 10px 0 3px;
+		}
+		span.sr{
+			padding: 0 3px 0 8px;
+		}
+		a{
+			text-decoration: underline;
+		}
+		.d-s-p{
+			padding-top: 10px;
+		}
+	}
+	.panel-body.p-t-n{
+		padding-top: 0;
+	}
+}
+.czje{
+	margin-left: 26px;
+}
+input[type="checkbox"].ml{
+	margin-left: 20px;
+}
+.fr{
+	float: left;
+}
+.sl{
+	margin-left: 22px;
+}
+a.order-status{
+	color: #428bca;
+}
+.a-underline{
+	color: #428bca;
+	text-decoration: underline;
+}
+.input-group .form-control{
+	z-index: 0!important;
+}

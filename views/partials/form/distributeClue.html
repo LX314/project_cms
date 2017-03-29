@@ -1,0 +1,65 @@
+<!-- 分配商机 模态框 -->
+<div class="modal fade" id="clueDistr" tabindex="-1" role="dialog" aria-labelledby="clueDistr" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<header class="panel-heading">
+				分配线索
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</header>
+			<div class="modal-body">
+				<div class="form-body">
+					<div class="form-horizontal">
+						<div class="form-group">
+							<label class="control-label col-md-4">客户名称：</label>
+							<div id="clientName" class="col-md-6 form-control-static"></div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4">联系人：</label>
+							<div id="contactName" class="col-md-6 form-control-static"></div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4">联系电话：</label>
+							<div id="contactTel" class="col-md-6 form-control-static"></div>
+						</div>
+						<form id="opportDistr" method="" role="">
+							<div class="form-group">
+								<label class="control-label col-md-4">分配至：</label>
+								<div class="col-md-5">
+									<input class="form-control" maxlength="20" type="text" name="distributeNameXS" id="distributeNameXS">
+								</div>
+								<div class="col-md-1">
+									<button type="button" id="distributeSear" class="btn btn-info">查询</button>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="adv-table clueTable">
+									<table class="table table-bordered table-striped" id="advTable1">
+										<thead>
+											<tr>
+												<th>员工编号</th>
+												<th>名称</th>
+												<th>一级部门</th>
+												<th>二级部门</th>
+												<th>职级</th>
+												<th>现有线索数量</th>
+											</tr>
+										</thead>
+									</table>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-4 col-md-offset-2">
+									<button type="button" id="distriSubmit" class="btn btn-info" style="width: 100px;">确认</button>
+								</div>
+								<div class="col-md-4 col-md-offset-1">
+									<button  id="btnCancel" class="btn btn-info" style="width: 100px;" data-dismiss="modal">返回</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+	</div>
+</div>

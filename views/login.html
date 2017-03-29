@@ -1,0 +1,78 @@
+{% extends 'layout/layoutLogin.html' %}
+
+{% block body %}
+<!-- CRM -->
+<div class="wrap header">
+	<div class="main">
+		<a class="brand"><img src="http://mj.weimob.com/img/logo_header.png" alt="微盟盟聚"></a>
+	</div>
+</div>
+
+<div class="main">
+	<div class="ln-img" id="banner">
+		<ul><li><img src="/img/login_left.jpg"/></li></ul>
+	</div>
+	<form id="formLogin" class="ln-bd ln-shadow" method="post">
+		<p class="g-tac"><i class="lnin ln-logo" title="盟聚"></i></p>
+		<p class="s-fs18 s-fc-b">账号登录</p>
+		{% if error %}
+			{% if error !== true %}
+			<p class="ln-tip js-logtip">{{error}}</p>
+			{% else %}
+			<p class="ln-tip js-logtip">用户名或密码错误！</p>
+			{% endif %}
+		{% else %}
+			<p class="ln-tip hide js-logtip">用户名或密码错误！</p>
+		{% endif %}
+		<p><input type="text" name="name" class="fm-text lnin ln-lnuser" placeholder="请输入您的账号"></p>
+		<p><input type="password" name="password" class="fm-text lnin ln-lnpwd" placeholder="请输入您的账号密码"></p>
+		<p>
+			<input type="submit" name="submit" value="登录" class="fm-btn">
+		</p>
+	</form>
+</div>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/css/login.css"> 
+<style>
+.banner { position: relative; overflow: auto; }
+.banner li { list-style: none; }
+.banner ul li { float: left; }
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: content-box; 
+	-moz-box-sizing:    content-box;
+	box-sizing:         content-box;
+}
+input {
+	outline: none;
+}
+</style>
+{% endblock %}
+
+{% block js %}
+<script src="/js/lib/jquery.js"></script>
+<script>
+(function($) {
+	"use strict";
+
+	var btnSubmit = $('[name=submit]');
+	var name = $('[name=name]');
+	var password = $('[name=password]');
+	var form = $('#formLogin');
+	var tip = $('.js-logtip');
+	btnSubmit.on('click', function() {
+		var nameVal = name.val();
+		var passVal = password.val();
+		if (nameVal && passVal) {
+			tip.addClass('hide');
+		} else {
+			tip.removeClass('hide');
+			return false;
+		}
+	});
+})(jQuery);
+</script>
+{% endblock %}

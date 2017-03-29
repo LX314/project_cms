@@ -1,0 +1,54 @@
+<!-- 分配商机 模态框 -->
+<div class="modal fade" id="addMoney" tabindex="-1" role="dialog" aria-labelledby="addMoney" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<header class="panel-heading">
+				账户加款
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</header>
+			<div class="modal-body">
+				<div class="form-body">
+					<div class="form-horizontal">
+						<div class="form-group">
+							<label class="control-label col-md-4">订单编号：</label>
+							<div id="orderCode" class="col-md-6 form-control-static"></div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4">客户名称：</label>
+							<div id="clientName" class="col-md-6 form-control-static"></div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4">订单总金额：</label>
+							<div id="orderTotal" class="col-md-6 form-control-static"></div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4">订单未收金额：</label>
+							<div id="orderUnreceive" class="col-md-6 form-control-static"></div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4">账户已充值金额：</label>
+							<div id="orderpaid" class="col-md-6 form-control-static"></div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4">本次收款金额：</label>
+							<div id="thisReceive" class="col-md-6 form-control-static" style="color: red"></div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4">本次账户充值金额：</label>
+							<div id="thisPaid" class="col-md-6 form-control-static" style="color: red"></div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-4 col-md-offset-2">
+								<button type="button" id="btnSubmit" class="btn btn-info" style="width: 120px;">确认账户加款</button>
+							</div>
+							<div class="col-md-4 col-md-offset-1">
+								<button  id="btnCancel" class="btn btn-info" style="width: 100px;" data-dismiss="modal">取消</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+	</div>
+</div>
