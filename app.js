@@ -11,6 +11,10 @@ const session      = require('express-session');
 const MongoStore   = require('connect-mongo')(session);
 const settings     = require('./config.db');
 const swig         = require('swig');
+// swig默认配置
+swig.setDefaults({
+	varControls: ['[[', ']]']
+});
 
 // 创建项目实例
 const app = express();

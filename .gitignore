@@ -1,7 +1,7 @@
 node_modules
 public/css
 dist
-demo
+demo/AdminLTE-master
 upload
 views/build
 public/build

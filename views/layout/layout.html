@@ -5,38 +5,39 @@
 	{% block css %}{% endblock %}
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-	<!-- header start -->
-	{% include "../globel/header.html" ignore missing %}
-	<!-- header end -->
-	
-	<!-- sidebar start -->
-	{% include "../globel/sidebar.html" ignore missing %}
-	<!-- sidebar end -->
+	<div id="vApp">
+		<!-- header start -->
+		{% include "../globel/header.html" ignore missing %}
+		<!-- header end -->
+		
+		<!-- sidebar start -->
+		{% include "../globel/sidebar.html" ignore missing %}
+		<!-- sidebar end -->
 
-	<div class="content-wrapper">
-		<!-- header-sub start -->
-		{% block header-sub %}{% endblock %}
-		<!-- header-sub end -->
+		<div class="content-wrapper">
+			<!-- header-sub start -->
+			{% block header-sub %}{% endblock %}
+			<!-- header-sub end -->
 
-		<!-- content header start -->
-		{% include "../globel/content-header.html" ignore missing %}
-		<!-- content header end -->
+			<!-- content header start -->
+			{% include "../globel/content-header.html" ignore missing %}
+			<!-- content header end -->
 
-		<!-- main-content start -->
-		<section class="content">
-			{% block body %}{% endblock %}
+			<!-- main-content start -->
+			<section class="content">
+				{% block body %}{% endblock %}
+			</section>
+			<!-- main-content end -->
+		</div>
 
-		</section>
-		<!-- main-content end -->
+		<!-- footer start -->
+		{% include "../globel/footer.html" ignore missing %}
+		<!-- footer end -->
+
+		<!-- control-sidebar start -->
+		{% include "../globel/control-sidebar.html" ignore missing %}
+		<!-- control-sidebar end -->
 	</div>
-
-	<!-- footer start -->
-	{% include "../globel/footer.html" ignore missing %}
-	<!-- footer end -->
-
-	<!-- control-sidebar start -->
-	{% include "../globel/control-sidebar.html" ignore missing %}
-	<!-- control-sidebar end -->
 
 	{% include "../globel/script.html" ignore missing %}
 	{% block js %}{% endblock %}

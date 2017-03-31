@@ -7,7 +7,6 @@ const LOGIN    = require('./routes/login');
 const REG      = require('./routes/register');	// 注册
 
 const INDEX    = require('./routes/index');
-const CLUB     = require('./routes/clue/index');
 const API      = require('./routes/api');
 
 module.exports = function(app) {
@@ -21,7 +20,6 @@ module.exports = function(app) {
 
 	// 主页面
 	app.use('/', INDEX);
-	app.use('/clue', CLUB);			// 线索列表
 
 	// API
 	app.use('/api', API);
