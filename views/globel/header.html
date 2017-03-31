@@ -215,13 +215,13 @@
 	<!-- User Account: style can be found in dropdown.less -->
 	<li class="dropdown user user-menu">
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	<img v-bind:src="user.image" class="user-image" alt="User Image">
-	<span class="hidden-xs" v-html="user.name"></span>
+	<img v-bind:src="user.avatar" class="user-image" alt="User Image">
+	<span class="hidden-xs" v-html="user.loginname"></span>
 	</a>
 	<ul class="dropdown-menu">
 	<!-- User image -->
 	<li class="user-header">
-	<img v-bind:src="user.image" class="img-circle" alt="User Image">
+	<img v-bind:src="user.avatar" class="img-circle" alt="User Image">
 
 	<p>
 	{{ user.name }} - Web Developer

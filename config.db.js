@@ -1,6 +1,4 @@
-const config     = require('./config').db;
 const mongodb    = require('mongodb');
 const db         = mongodb.Db;
-const connection = mongodb.Connection;
 const server     = mongodb.Server;
-module.exports   = new db(config.db, new server(config.host, config.port), { safe: true });
+module.exports   = new db('cms', new server('localhost', 27017), { safe: true });

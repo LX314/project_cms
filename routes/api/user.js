@@ -2,26 +2,45 @@ const express = require('express');
 const router  = express.Router();
 const config  = require('../../config');
 const MJJS    = require('../../common/MJJS');
+const eventproxy = require('eventproxy');
 const Cache   = require('../../models/cache');
-const User    = require('../../models/user');
+const proxy   = require('../../proxy');
+const User    = proxy.User;
+// const User    = require('../../models/user');
 
 router.all('/getUserInfo', (req, res, next) => {
 	var token  = req.signedCookies.token;
+
+	var ep = new eventproxy();
+	ep.fail(next);
+	ep.on('user_error', function (code) {
+		da.message = Code[code];
+		res.send(da);
+	});
+
 	Cache.get({
 		key: token,
 		cb: function(e, o) {
 			if (e) return res.redirect(config.link.logout);
-			User.get(o.user, function(err, user) {
+			User.getUserByLoginName(o.loginname, function (err, user) {
+				if (err) {
+					return next(err);
+				}
+
+				if (!user) {
+					return ep.emit('0003');
+				}
+
 				res.send({
 					code: '0000',
 					data: {
-						name: user.name,
-						image: user.image,
-						email: user.email,
-						mobile: user.mobile || ''
+						loginname: user.loginname,
+						avatar: user.avatar,
+						email: user.email
 					},
 					message: '成功!'
 				});
+
 			});
 		}
 	});

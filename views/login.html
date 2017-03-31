@@ -29,7 +29,7 @@
 		<span>CMS</span>
 	</a>
 	<form id="formLogin" class="form-login" method="post">
-		<p><input type="text" name="name" class="fm-text fm-ln" placeholder="user"></p>
+		<p><input type="text" name="loginname" class="fm-text fm-ln" placeholder="user"></p>
 		<p><input type="password" name="password" class="fm-text fm-ln" placeholder="password"></p>
 		<p><input type="submit" name="submit" value="登录" class="fm-btn"></p>
 	</form>
@@ -50,7 +50,7 @@
 	var INDEX = {
 		init: function(me) {
 			me.$btnSubmit = $('[name=submit]');
-			me.$name = $('[name=name]');
+			me.$name = $('[name=loginname]');
 			me.$password = $('[name=password]');
 			me.$form = $('#formLogin');
 			me.$banner = $('.banner li');

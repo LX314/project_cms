@@ -5,9 +5,9 @@ const crypto  = require('crypto');
 const Cache   = require('../models/cache');
 
 router.get('*', (req, res, next) => {
-	var token    = req.signedCookies.token;
-	var username = req.signedCookies.username;
-	if (token && username) {
+	var token     = req.signedCookies.token;
+	var loginname = req.signedCookies.loginname;
+	if (token && loginname) {
 		Cache.get({
 			key: token,
 			cb: function(e, o) {

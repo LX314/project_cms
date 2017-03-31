@@ -4,7 +4,7 @@ const config  = require('../../config');
 const MJJS    = require('../../common/MJJS');
 const File    = require('../../models/file');
 const mongo   = require('../../models/mongo');
-const code    = require('../../common/code');
+const Code    = require('../../common/code');
 
 const formidable = require('formidable');
 
@@ -32,13 +32,13 @@ router.post('/upload', (req, res, next) => {
 			if (err) {
 				console.log(err);
 				da.code = '0100';
-				da.message = code[da.code];
+				da.message = Code[da.code];
 
 				return res.send(da);
 			}
 			if (!l) {
 				da.code = '0103';
-				da.message = code[da.code];
+				da.message = Code[da.code];
 				return res.send(da);
 			}
 			File.upload('img', username, files, function(len, urls) {
@@ -51,13 +51,13 @@ router.post('/upload', (req, res, next) => {
 						return res.send(da);
 					} else {
 						da.code = '0102';
-						da.message = code[da.code];
+						da.message = Code[da.code];
 						da.data = urls;
 						return res.send(da);
 					}
 				} else {
 					da.code = '0101';
-					da.message = code[da.code];
+					da.message = Code[da.code];
 					return res.send(da);
 				}
 			});

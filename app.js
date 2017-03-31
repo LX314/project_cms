@@ -9,8 +9,12 @@ const config       = require('./config');
 const routes       = require('./config.routes');
 const session      = require('express-session');
 const MongoStore   = require('connect-mongo')(session);
+const RedisStore   = require('connect-redis')(session);
+const mongoose     = require('mongoose');
 const settings     = require('./config.db');
 const swig         = require('swig');
+require('./models');
+
 // swig默认配置
 swig.setDefaults({
 	varControls: ['[[', ']]']
@@ -31,12 +35,17 @@ app.use(logger('dev'));
 app.use(session({
 	secret: config.cookieSecret + '.secret',
 	key: config.db.db,
-	resave: true,
 	cookie: { maxAge: config.cookieExpiredTime },
 	name: 'mjcms.session',
-	saveUninitialized: true,
-	store: new MongoStore({
-		url: 'mongodb://localhost/' + config.db.db
+	resave: false,
+	saveUninitialized: false,
+	// store: new MongoStore({
+	// 	url: 'mongodb://localhost/cms'
+	// })
+	store: new RedisStore({
+		port: 6379,
+		host: '127.0.0.1',
+		db: 0
 	})
 }));
 

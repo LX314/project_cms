@@ -3,11 +3,15 @@
 {% block body %}
 <div class="row">
 	<div class="col-md-12">
-		<h1 class="page-header">{{title}}</h1>
+		<h1 class="page-header">[[title]]</h1>
 		<div class="col-md-3">
 			<div class="form-group">
-				<label for="name">用户名</label>
-				<input type="text" class="form-control" id="name" placeholder="邮箱或手机号">
+				<label for="loginname">用户名</label>
+				<input type="text" class="form-control" id="loginname" placeholder="用户名">
+			</div>
+			<div class="form-group">
+				<label for="email">邮箱</label>
+				<input type="text" class="form-control" id="email" placeholder="邮箱">
 			</div>
 			<div class="form-group">
 				<label for="password">密码</label>
@@ -19,7 +23,7 @@
 			</div>
 			<div class="form-group">
 				<label for="usericon">用户头像</label>
-				<input type="file" name="userImage" id="userImage" accept=".jpg,.png">
+				<input type="file" name="avatar" id="avatar" accept=".jpg,.png">
 			</div>
 			<button id="formSubmit" class="btn btn-default">注册</button>
 		</div>
@@ -36,34 +40,46 @@ $(function() {
 	$('#formSubmit').on('click', function() {
 		var msg  = '';
 		var emailRE    = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/,
+			nameRE     = /^([a-zA-Z0-9_-])+$/,
 			phoneRE    = /^1(3|4|5|7|8)\d{9}$/,
-			passwordRE = /^[A-Za-z0-9]{6,20}$/;		// 6-20位字母数字组合
-		var name      = $('#name').val().trim(),
+			passwordRE = /^[A-Za-z0-9]{6,20}$/,		// 6-20位字母数字组合
+			isLetter   = /[A-Za-z]+/,
+			isNumber   = /[\d]+/;
+		var name      = $('#loginname').val().trim(),
+			email     = $('#email').val().trim(),
 			password  = $('#password').val().trim(),
 			passwordR = $('#passwordR').val().trim(),
-			userImage = $('#userImage')[0].files;
-		if (!emailRE.test(name) && !phoneRE.test(name)) msg = '用户名不正确';
-		if (!passwordRE.test(password)) msg = '密码格式不正确';
+			avatar    = $('#avatar')[0].files;
+		if (!nameRE.test(name)) msg = '用户名不正确';
+		if (!emailRE.test(email)) msg = '邮箱不正确';
+		if (!passwordRE.test(password) || (!isLetter.test(password) || !isNumber.test(password))) msg = '密码格式不正确';
 		if (password != passwordR) msg = '两次输入的密码不一致';
-		if (!userImage.length) msg = '请选择用户头像';
+		// if (!avatar.length) msg = '请选择用户头像';
 		var formData = new FormData();
-		formData.append('name', name);
+		formData.append('loginname', name);
+		formData.append('email', email);
 		formData.append('password', password);
 		formData.append('passwordR', passwordR);
-		formData.append('userImage', userImage[0]);
+		// formData.append('avatar', avatar[0]);
 		if (msg) {
 			alert(msg);
 			return false;
 		}
 		$.ajax({
 			url: '/reg',
-			data: formData,
+			// data: formData,
+			data: {
+				loginname: name,
+				email: email,
+				password: password,
+				passwordR: passwordR
+			},
 			type: 'post',
-			cache: false,
+			// cache: false,
 			// 告诉jQuery不要去处理发送的数据
-			processData: false,
+			// processData: false,
 			// 告诉jQuery不要去设置Content-Type请求头
-			contentType: false
+			// contentType: false
 		}).done(function(d) {
 			console.log(d);
 			alert(d.message);

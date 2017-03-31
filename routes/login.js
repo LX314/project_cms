@@ -1,12 +1,14 @@
 const express = require('express');
 const router  = express.Router();
 const config  = require('../config');
+const eventproxy = require('eventproxy');
 const crypto  = require('crypto');
-const User    = require('../models/user');
 const Cache   = require('../models/cache');
-const code    = require('../common/code');
+const Code    = require('../common/code');
+const proxy   = require('../proxy');
+const User    = proxy.User;
 
-router.get('/', User.isNotLogin);
+// router.get('/', User.isNotLogin);
 router.get('/', (req, res, next) => {
 	res.render('login', {
 		config: config,
@@ -16,50 +18,66 @@ router.get('/', (req, res, next) => {
 
 
 router.post('/', (req, res, next) => {
-	var body     = req.body,
-		name     = body.name,
-		password = body.password;
+	var body      = req.body,
+		loginname = body.loginname,
+		password  = body.password;
+
 	var da = {
 		code: '9999',
 		message: '数据异常!',
 		data: null
 	};
-	// 生成密码的 md5 值
-	var md5      = crypto.createHash('md5'),
-		password = md5.update(password).digest('hex');
-	// 检查用户是否已经存在
-	User.get(name, function(err, user) {
+
+	var ep = new eventproxy();
+	ep.fail(next);
+	ep.on('login_error', function (code) {
+		da.message = Code[code];
+		res.send(da);
+	});
+
+	// 验证信息的正确性
+	if ([loginname, password].some((_) => { return _ === ''; })) {
+		ep.emit('prop_err', '0002');
+		return;
+	}
+
+	// 生成密码的 hash 值
+	const passhash = crypto.createHmac('sha256', config.passSecret).update(password).digest('hex');
+	
+	// 正则校验
+	var emailRE  = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/,
+		nameRE     = /^([a-zA-Z0-9_-])+$/,
+		phoneRE    = /^1(3|4|5|7|8)\d{9}$/,
+		passwordRE = /^[A-Za-z0-9]{6,20}$/,		// 6-20位字母数字组合
+		isLetter   = /[A-Za-z]+/,
+		isNumber   = /[\d]+/;
+
+	var getUser   = User.getUserByLoginName;
+
+	if (emailRE.test(loginname)) getUser = User.getUserByMail;
+
+	// 检查用户名是否已经存在
+	getUser(loginname, function (err, user) {
 		if (err) {
-			console.log(da);
-			return res.send(da);
+			return next(err);
 		}
+
 		if (!user) {
-			da.code = '0007';
-			da.message = code[da.code];
-			console.log(da);
-			return res.send(da);
+			return ep.emit('0003');
 		}
-		// 检查密码是否一致
-		if (user.password != password) {
-			da.code = '0008';
-			da.message = code[da.code];
-			console.log(da);
-			return res.send(da);
+
+		if (passhash != user.password) {
+			return ep.emit('0004');
 		}
-		// 用户名密码都匹配后, 将用户信息存入 session
-		req.session.user = user;			// 用户信息存入 session
-		da.code = '0000';
-		da.message = '登录成功!';
-		console.log(da, user);
-		var sha   = crypto.createHash('sha256'),
-			token = sha.update(user.name).digest('hex');
-		da.data = token;
+
+		var token = crypto.createHmac('sha256', config.passSecret).update(user.accessToken+ new Date()*1).digest('hex');
+
 		Cache.save({
 			key: token,
-			data: { user: user.name },
+			data: { loginname: user.loginname },
 			cb: function(o) {
 				res.cookie('token', token, config.cookieCtrl);
-				res.cookie('username', user.name, config.cookieCtrl);
+				res.cookie('loginname', user.loginname, config.cookieCtrl);
 				res.redirect(config.link.index)
 			}
 		});

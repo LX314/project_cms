@@ -4,10 +4,10 @@ const config  = require('../config');
 const MJJS    = require('../common/MJJS');
 
 router.get('/', (req, res, next) => {
-	var token    = req.signedCookies.token;
-	var username = req.signedCookies.username;
+	var token     = req.signedCookies.token;
+	var loginname = req.signedCookies.loginname;
 	res.clearCookie('token');
-	res.clearCookie('username');
+	res.clearCookie('loginname');
 	res.redirect(config.link.index);
 	// if (token) {
 	// 	res.redirect(config.link.index);

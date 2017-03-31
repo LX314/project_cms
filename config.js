@@ -40,6 +40,7 @@ const currentConfig = config[env];
 
 module.exports = currentConfig;
 module.exports.cookieSecret = 'cms.mjmobi.com';
+module.exports.passSecret = 'jimmy.zhuang';
 module.exports.cacheExpiredTime = cacheExpiredTime;
 module.exports.env     = env;
 module.exports.debug   = (env == 'development');
@@ -52,11 +53,12 @@ module.exports.dir = {
 };
 
 // MongonDB 配置
-module.exports.db = {
-	db: 'cms',
-	host: 'localhost',
-	port: 27017
-};
+module.exports.db = 'mongodb://localhost/cms';
+// module.exports.db = {
+// 	db: 'cms',
+// 	host: 'localhost',
+// 	port: 27017
+// };
 // Redis 配置
 module.exports.redis = {
 	host: '127.0.0.1',
