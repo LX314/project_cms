@@ -7,19 +7,19 @@
 		{
 			color: 'aqua',
 			icon:  'ion ion-ios-gear-outline',
-			name:  'CPU Traffic',
-			data:  '90<small>%</small>'
+			name:  '图片推荐位',
+			data:  '90,540'
 		},
 		{
 			color: 'red',
 			icon:  'fa fa-google-plus',
-			name:  'Likes',
+			name:  '文本推荐位',
 			data:  '41,410'
 		},
 		{
 			color: 'green',
 			icon:  'ion ion-ios-cart-outline',
-			name:  'Sales',
+			name:  '落地页',
 			data:  '760'
 		}
 	];
