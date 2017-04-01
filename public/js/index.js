@@ -21,12 +21,6 @@
 			icon:  'ion ion-ios-cart-outline',
 			name:  'Sales',
 			data:  '760'
-		},
-		{
-			color: 'yellow',
-			icon:  'ion ion-ios-people-outline',
-			name:  'New Members',
-			data:  '2,000'
 		}
 	];
 }(this));

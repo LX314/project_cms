@@ -7,8 +7,6 @@
   },
   "dependencies": {
     "ali-oss": "^4.8.0",
-    "async": "^2.2.0",
-    "bcryptjs": "^2.4.3",
     "body-parser": "~1.13.2",
     "co": "^4.6.0",
     "colors": "^1.1.2",
@@ -33,7 +31,6 @@
     "gulp-uglify": "^1.5.3",
     "jshint": "^2.9.4",
     "moment": "^2.18.1",
-    "mongodb": "^2.2.25",
     "mongoose": "^4.9.2",
     "morgan": "~1.6.1",
     "node-uuid": "^1.4.8",

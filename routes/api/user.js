@@ -6,7 +6,7 @@ const eventproxy = require('eventproxy');
 const Cache   = require('../../models/cache');
 const proxy   = require('../../proxy');
 const User    = proxy.User;
-// const User    = require('../../models/user');
+const Level   = require('../../common/level');
 
 router.all('/getUserInfo', (req, res, next) => {
 	var token  = req.signedCookies.token;
@@ -26,17 +26,17 @@ router.all('/getUserInfo', (req, res, next) => {
 				if (err) {
 					return next(err);
 				}
-
 				if (!user) {
 					return ep.emit('0003');
 				}
-
 				res.send({
 					code: '0000',
 					data: {
 						loginname: user.loginname,
 						avatar: user.avatar,
-						email: user.email
+						email: user.email,
+						level: user.level || 0,
+						levelName: Level[user.level] || Level[0]
 					},
 					message: '成功!'
 				});

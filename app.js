@@ -11,7 +11,6 @@ const session      = require('express-session');
 const MongoStore   = require('connect-mongo')(session);
 const RedisStore   = require('connect-redis')(session);
 const mongoose     = require('mongoose');
-const settings     = require('./config.db');
 const swig         = require('swig');
 require('./models');
 

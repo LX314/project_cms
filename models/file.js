@@ -1,4 +1,4 @@
-const mongodb = require('../config.db');
+/*const mongodb = require('../config.db');
 const config  = require('../config');
 const crypto  = require('crypto');
 const Mongo   = require('../models/mongo');
@@ -87,4 +87,4 @@ module.exports = {
 			console.log(err);
 		});
 	}
-};
+};*/

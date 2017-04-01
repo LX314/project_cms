@@ -1,4 +1,3 @@
-const bcrypt = require('bcryptjs');
 const moment = require('moment');
 
 moment.locale('zh-cn'); // 使用中文
@@ -12,17 +11,4 @@ exports.formatDate = function (date, friendly) {
 	} else {
 		return date.format('YYYY-MM-DD HH:mm');
 	}
-};
-
-// 校验ID
-exports.validateId = function (str) {
-	return (/^[a-zA-Z0-9\-_]+$/i).test(str);
-};
-
-exports.bhash = function (str, callback) {
-	bcrypt.hash(str, 10, callback);
-};
-
-exports.bcompare = function (str, hash, callback) {
-	bcrypt.compare(str, hash, callback);
 };

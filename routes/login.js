@@ -31,8 +31,13 @@ router.post('/', (req, res, next) => {
 	var ep = new eventproxy();
 	ep.fail(next);
 	ep.on('login_error', function (code) {
-		da.message = Code[code];
-		res.send(da);
+		// da.message = Code[code];
+		// res.send(da);
+		res.render('login', {
+			config: config,
+			title: '登录',
+			message: Code[code]
+		});
 	});
 
 	// 验证信息的正确性
@@ -63,11 +68,11 @@ router.post('/', (req, res, next) => {
 		}
 
 		if (!user) {
-			return ep.emit('0003');
+			return ep.emit('login_error', '0003');
 		}
 
 		if (passhash != user.password) {
-			return ep.emit('0004');
+			return ep.emit('login_error', '0004');
 		}
 
 		var token = crypto.createHmac('sha256', config.passSecret).update(user.accessToken+ new Date()*1).digest('hex');

@@ -1,4 +1,4 @@
-const mongodb = require('../config.db');
+/*const mongodb = require('../config.db');
 const config  = require('../config');
 const Cache   = require('../models/cache');
 
@@ -104,4 +104,4 @@ module.exports = {
 			return next();
 		}
 	}
-};
+};*/
