@@ -13,7 +13,8 @@ const formidable = require('formidable');
 
 // 注册界面
 router.get('/', (req, res, next) => {
-	res.render('register', {
+	// res.render('register', {
+	res.render('register2', {
 		config: config,
 		title: '注册',
 		user: req.session.user
